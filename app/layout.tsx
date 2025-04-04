@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import AppProvider from "./AppProvider";
-import Layout from "./components/Layout"; // Import your Layout component
+import Layout from "./components/Layout";
 
 // Import the Inter font from Google Fonts with the Latin subset
 const inter = Inter({ subsets: ["latin"] });
