@@ -16,11 +16,6 @@ interface PaymentFormProps {
 	classes: string;
 }
 
-interface CSRFToken {
-	token: string;
-	expiresAt: number;
-}
-
 /**
  * PaymentForm component
  *
@@ -48,75 +43,12 @@ const PaymentForm: FC<PaymentFormProps> = ({ classes }) => {
 		setError,
 	} = context;
 
-	// CSRF token state
-	const [csrfToken, setCsrfToken] = useState<string>('');
-	const [csrfExpiresAt, setCsrfExpiresAt] = useState<number>(0);
-
 	// Create refs for each input field
 	const cardNumberRef = useRef<HTMLInputElement>(null);
 	const expiryRef = useRef<HTMLInputElement>(null);
 	const cvvRef = useRef<HTMLInputElement>(null);
 	const nameRef = useRef<HTMLInputElement>(null);
 	const zipRef = useRef<HTMLInputElement>(null);
-
-	// Generate CSRF token
-	const generateCSRFToken = (): CSRFToken => {
-		const token =
-			Math.random().toString(36).substring(2, 15) +
-			Math.random().toString(36).substring(2, 15) +
-			Math.random().toString(36).substring(2, 15);
-		return {
-			token,
-			expiresAt: Date.now() + 30 * 60 * 1000, // 30 minutes
-		};
-	};
-
-	// Store CSRF token
-	const storeCSRFToken = (token: CSRFToken) => {
-		if (typeof window !== 'undefined') {
-			sessionStorage.setItem('csrfToken', JSON.stringify(token));
-		}
-	};
-
-	// Get stored CSRF token
-	const getStoredCSRFToken = (): CSRFToken | null => {
-		if (typeof window !== 'undefined') {
-			const stored = sessionStorage.getItem('csrfToken');
-			if (stored) {
-				try {
-					return JSON.parse(stored);
-				} catch (error) {
-					console.error('Failed to parse stored CSRF token:', error);
-				}
-			}
-		}
-		return null;
-	};
-
-	// Validate CSRF token
-	const validateCSRFToken = (token: string, expiresAt: number): boolean => {
-		if (!token || Date.now() > expiresAt) {
-			return false;
-		}
-		return true;
-	};
-
-	// Initialize CSRF token on component mount
-	useEffect(() => {
-		const storedToken = getStoredCSRFToken();
-
-		if (storedToken && storedToken.expiresAt > Date.now()) {
-			// Use stored token if valid
-			setCsrfToken(storedToken.token);
-			setCsrfExpiresAt(storedToken.expiresAt);
-		} else {
-			// Generate new token
-			const newToken = generateCSRFToken();
-			storeCSRFToken(newToken);
-			setCsrfToken(newToken.token);
-			setCsrfExpiresAt(newToken.expiresAt);
-		}
-	}, []);
 
 	/**
 	 * Validators for the PaymentForm component.
@@ -253,14 +185,6 @@ const PaymentForm: FC<PaymentFormProps> = ({ classes }) => {
 	const handleSubmit = (event: FormEvent) => {
 		event.preventDefault();
 
-		// Validate CSRF token first
-		if (!validateCSRFToken(csrfToken, csrfExpiresAt)) {
-			alert(
-				'Security validation failed. Please refresh the page and try again.'
-			);
-			return;
-		}
-
 		const newError: Record<string, string> = {};
 		if (!validators.cardNumber(cardNumber))
 			newError.cardNumber = 'Invalid card number.';
@@ -286,9 +210,6 @@ const PaymentForm: FC<PaymentFormProps> = ({ classes }) => {
 			onSubmit={handleSubmit}
 			className={`space-y-4 ${classes}`}
 		>
-			{/* Hidden CSRF token field */}
-			<input type='hidden' name='csrfToken' value={csrfToken} />
-
 			<InputField
 				id='cardNumber'
 				label='Card number'

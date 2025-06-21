@@ -19,7 +19,6 @@
 ## Features
 
 - 💳 **Credit Card Payment** with real-time validation
-- 🔒 **CSRF Protection** (client-side, with recommendations for production)
 - 🧑‍🦽 **Accessible**: Keyboard navigation, ARIA labels, and focus management
 - 📱 **Responsive**: Works on all device sizes
 - ✨ **Modern UI**: Clean, branded, and user-friendly
@@ -33,7 +32,6 @@
   - [Overview](#overview)
   - [Features](#features)
   - [Table of Contents](#table-of-contents)
-  - [Screenshots](#screenshots)
   - [Tech Stack](#tech-stack)
   - [Pages](#pages)
     - [Home/Welcome Page (`/app/page.tsx`)](#homewelcome-page-apppagetsx)
@@ -50,14 +48,6 @@
   - [Contributing](#contributing)
   - [License](#license)
   - [Acknowledgements](#acknowledgements)
-
----
-
-## Screenshots
-
-| Large (1024px)                    | Medium (768px)                    | Small (375px)                     |
-| --------------------------------- | --------------------------------- | --------------------------------- |
-| ![lg](screenshots/PayInfo-lg.png) | ![md](screenshots/PayInfo-md.png) | ![xs](screenshots/PayInfo-xs.png) |
 
 ---
 
@@ -109,7 +99,6 @@
 - **ZIP Code**: US postal code format
 - **Focus Movement**: Focus moves to the next field only on Tab/Enter (not automatically)
 - **Screen Reader Support**: ARIA labels and error messages
-- **CSRF Protection**: Client-side token, see `CSRF_IMPLEMENTATION.md` for details
 
 ---
 
