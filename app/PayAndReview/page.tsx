@@ -38,14 +38,13 @@ export default function PayAndReview(): React.JSX.Element {
 		editing ? styles.collapse : styles.expand
 	);
 
+	// Handle direct navigation to this page
 	useEffect(() => {
-		// Set editing to true if the page is accessed directly and editing is false
-		// Only do this on initial load, not every time editing changes
-		if (editing === false && setEditing) {
+		// Only set editing to true if it's not already set and we have the setter
+		if (editing === undefined && setEditing) {
 			setEditing(true);
 		}
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, []); // Remove editing and setEditing from dependencies
+	}, [editing, setEditing]);
 
 	useEffect(() => {
 		if (editing) {
