@@ -32,36 +32,42 @@ export default function Home(): React.JSX.Element {
 	};
 
 	return (
-		<div className='flex flex-col min-h-screen h-screen'>
-			<main className='flex flex-col items-center justify-center text-center'>
-				<section className='grow basis-2/5 px-10 py-10 md:px-32 md:py-32 max-[768px]:px-10 max-[768px]:py-10'>
-					<h1 className='mb-4 text-4xl font-bold text-custom-blue font-georgia max-[768px]:text-xl'>
+		<div className='flex flex-col min-h-screen items-center justify-center bg-transparent'>
+			{/* Background decorative elements */}
+			<div className='absolute inset-0 overflow-hidden pointer-events-none'>
+				<div className='absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-primary-400/20 to-accent-400/20 rounded-full blur-3xl animate-pulse-slow'></div>
+				<div
+					className='absolute -bottom-40 -left-40 w-80 h-80 bg-gradient-to-tr from-accent-400/20 to-primary-400/20 rounded-full blur-3xl animate-pulse-slow'
+					style={{ animationDelay: '1s' }}
+				></div>
+			</div>
+
+			<main className='flex flex-1 flex-col items-center justify-center text-center relative z-10 w-full'>
+				<div className='glass rounded-2xl p-8 shadow-soft backdrop-blur-md max-w-md w-full mx-auto animate-fade-in flex flex-col gap-6'>
+					<h1 className='text-4xl font-bold bg-gradient-to-r from-primary-600 to-accent-600 bg-clip-text text-transparent font-poppins max-[768px]:text-2xl mb-2'>
 						Hi, Taylor
 					</h1>
-					<p className='mb-4 text-base font-arial font-normal leading-[24px] tracking-[0.2px] text-custom-dark max-w-xl'>
-						You have 6 medical bills ready from ABC Health System. You can pay
-						your bills here or verify your identity to view full bill details.
+					<p className='text-base font-inter font-normal leading-relaxed text-white/90 max-w-xl mx-auto mb-2'>
+						You have{' '}
+						<span className='font-semibold text-primary-200'>6 bills</span>{' '}
+						ready for payment. You can pay your bills here or verify your
+						identity to view full bill details.
 					</p>
-				</section>
-				<section className='relative flex flex-col w-full min-h-screen bottom-0 rounded-t-2xl bg-white shadow-md'>
-					<div className='absolute inset-x-0 top-24 px-0 mx-auto max-w-xl max-[768px]:px-0'>
-						<div className='mb-4 flex justify-around'>
-							<div className='mr-2 text-2xl font-bold text-custom-gray'>
-								Total due
-							</div>
-							<div className='text-3xl font-bold text-custom-blue font-georgia'>
-								${amount}
-							</div>
+					<div className='flex justify-between items-center mb-4'>
+						<div className='text-lg font-semibold text-white/90 font-inter'>
+							Total due
 						</div>
-
-						<button
-							className='w-10/12 px-4 py-2 text-white bg-blue-600 rounded-lg md:w-8/12'
-							onClick={handleContinue}
-						>
-							Pay total
-						</button>
+						<div className='text-3xl font-bold bg-gradient-to-r from-primary-400 to-accent-400 bg-clip-text text-transparent font-poppins'>
+							${amount}
+						</div>
 					</div>
-				</section>
+					<button
+						className='w-full px-6 py-3 text-white font-semibold bg-gradient-button hover:bg-gradient-button-hover rounded-xl shadow-glow hover:shadow-glow-lg transition-all duration-300 transform hover:scale-105 font-inter text-lg'
+						onClick={handleContinue}
+					>
+						Pay total
+					</button>
+				</div>
 			</main>
 		</div>
 	);

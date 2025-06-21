@@ -3,7 +3,6 @@ import bundleAnalyzer from '@next/bundle-analyzer';
 /** @type {import('next').NextConfig} */
 const nextConfig = {
 	basePath: '/payment-flow',
-	output: 'export',
 	reactStrictMode: true,
 	experimental: {
 		optimizePackageImports: ['validator'],

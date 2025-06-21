@@ -11,7 +11,7 @@
 
 ## Overview
 
-**Simple Payment Flow** is a modern, accessible, and secure payment portal for medical bills, built with **Next.js 15**, **TypeScript**, and **Tailwind CSS**. The app guides users through a streamlined payment process with real-time validation, accessibility features, and a responsive design.
+**Simple Payment Flow** is a modern, accessible, and secure payment portal for bills and invoices, built with **Next.js 15**, **TypeScript**, and **Tailwind CSS**. The app guides users through a streamlined payment process with real-time validation, accessibility features, and a responsive design.
 
 ---
 

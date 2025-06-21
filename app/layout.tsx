@@ -1,6 +1,6 @@
 import React from 'react';
 import type { Metadata, Viewport } from 'next';
-import { Inter } from 'next/font/google';
+import { Inter, Poppins } from 'next/font/google';
 import './globals.css';
 import AppProvider from './AppProvider';
 import Layout from './components/Layout';
@@ -10,14 +10,24 @@ const inter = Inter({
 	subsets: ['latin'],
 	display: 'swap',
 	preload: true,
+	variable: '--font-inter',
+});
+
+// Import the Poppins font from Google Fonts
+const poppins = Poppins({
+	subsets: ['latin'],
+	display: 'swap',
+	preload: true,
+	weight: ['400', '500', '600', '700', '800', '900'],
+	variable: '--font-poppins',
 });
 
 /**
  * Metadata for the app
  */
 export const metadata: Metadata = {
-	title: 'ABC Health System - Payment Portal',
-	description: 'Secure payment processing for ABC Health System',
+	title: 'Secure Payment Portal',
+	description: 'Secure payment processing for your bills and invoices',
 	robots: 'noindex, nofollow',
 	icons: {
 		icon: '/favicon.ico',
@@ -52,7 +62,9 @@ export default function RootLayout({
 					crossOrigin='anonymous'
 				/>
 			</head>
-			<body className={inter.className}>
+			<body
+				className={`${inter.variable} ${poppins.variable} ${inter.className}`}
+			>
 				<AppProvider>
 					<Layout>{children}</Layout>
 				</AppProvider>
