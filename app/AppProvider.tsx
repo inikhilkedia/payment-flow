@@ -1,53 +1,17 @@
-"use client";
+'use client';
 
-import React, { useState } from "react";
-import AppContext from "./AppContext";
+import React, { ReactNode } from 'react';
+import { PaymentProvider, UIProvider } from './AppContext';
 
 interface AppProviderProps {
-	children: React.ReactNode;
-}
-
-interface PaymentError {
-	cardNumber?: boolean;
-	expiry?: boolean;
-	cvv?: boolean;
-	name?: boolean;
-	zip?: boolean;
+	children: ReactNode;
 }
 
 const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
-	const [amount, setAmount] = useState<number>(600.0);
-	const [cardNumber, setCardNumber] = useState<string | undefined>("");
-	const [expiry, setExpiry] = useState<string | undefined>("");
-	const [cvv, setCvv] = useState<string | undefined>("");
-	const [name, setName] = useState<string | undefined>("");
-	const [zip, setZip] = useState<string | undefined>("");
-	const [editing, setEditing] = useState<boolean>(false);
-	const [error, setError] = useState<PaymentError>({});
-
 	return (
-		<AppContext.Provider
-			value={{
-				amount,
-				setAmount,
-				cardNumber,
-				setCardNumber,
-				expiry,
-				setExpiry,
-				cvv,
-				setCvv,
-				name,
-				setName,
-				zip,
-				setZip,
-				editing,
-				setEditing,
-				error,
-				setError,
-			}}
-		>
-			{children}
-		</AppContext.Provider>
+		<PaymentProvider>
+			<UIProvider>{children}</UIProvider>
+		</PaymentProvider>
 	);
 };
 
