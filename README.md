@@ -1,8 +1,9 @@
 # Simple Payment Flow
 
-![Screenshot from the PayInfo Page](screenshots/PayInfo-lg.png)
+![Screenshot from the PayInfo Page](PayInfo-lg.png)
 
 [![Next.js](https://img.shields.io/badge/Next.js-15.3.4-blue)](https://nextjs.org/)
+[![React](https://img.shields.io/badge/React-19.1-blue)](https://react.dev/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue)](https://www.typescriptlang.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.x-blue)](https://tailwindcss.com/)
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
@@ -28,17 +29,27 @@
 
 ## Table of Contents
 
-- [Overview](#overview)
-- [Features](#features)
-- [Screenshots](#screenshots)
-- [Tech Stack](#tech-stack)
-- [Pages](#pages)
-- [Components](#components)
-- [Validation & Accessibility](#validation--accessibility)
-- [Getting Started](#getting-started)
-- [Deployment](#deployment)
-- [Contributing](#contributing)
-- [License](#license)
+- [Simple Payment Flow](#simple-payment-flow)
+  - [Overview](#overview)
+  - [Features](#features)
+  - [Table of Contents](#table-of-contents)
+  - [Screenshots](#screenshots)
+  - [Tech Stack](#tech-stack)
+  - [Pages](#pages)
+    - [Home/Welcome Page (`/app/page.tsx`)](#homewelcome-page-apppagetsx)
+    - [Pay \& Review Page (`/app/PayAndReview/page.tsx`)](#pay--review-page-apppayandreviewpagetsx)
+    - [Thank You Page (`/app/ThankYou/page.tsx`)](#thank-you-page-appthankyoupagetsx)
+  - [Components](#components)
+  - [Validation \& Accessibility](#validation--accessibility)
+  - [Getting Started](#getting-started)
+    - [Prerequisites](#prerequisites)
+    - [Installation](#installation)
+    - [Running the Development Server](#running-the-development-server)
+    - [Building for Production](#building-for-production)
+  - [Deployment](#deployment)
+  - [Contributing](#contributing)
+  - [License](#license)
+  - [Acknowledgements](#acknowledgements)
 
 ---
 

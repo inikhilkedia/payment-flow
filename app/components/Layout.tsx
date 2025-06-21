@@ -52,13 +52,13 @@ const Layout = ({ children }: LayoutProps): React.JSX.Element => {
 					<Image
 						src='/payment-flow/logo.png'
 						alt='Payment Portal'
-						width={120}
-						height={40}
-						className='h-auto w-auto cursor-pointer transition-transform duration-300 hover:scale-105'
+						width={80}
+						height={30}
+						className='h-auto cursor-pointer transition-transform duration-300 hover:scale-105'
 						onClick={handleLogoClick}
 						priority
 						loading='eager'
-						sizes='(max-width: 768px) 100px, 120px'
+						sizes='(max-width: 768px) 60px, 80px'
 					/>
 				</div>
 			</header>
